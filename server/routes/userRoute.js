@@ -22,7 +22,7 @@ userRoute.post("/users", AccessToken, async (req, res) => {
     const usersArray = Object.entries(users).map(([id, name]) => ({
       id,
       name,
-      postCount: 0, // Initialize post count
+      postCount: 0, 
     }));
 
     // Fetch post count for each user in parallel
@@ -75,4 +75,34 @@ userRoute.post("/users", AccessToken, async (req, res) => {
   }
 });
 
+userRoute.post("/users/dummy", async (req, res) => {
+  const topUsers =[
+        {
+            "id": "3",
+            "name": "Alice Smith",
+            "postCount": 6
+        },
+        {
+            "id": "10",
+            "name": "Helen Moore",
+            "postCount": 6
+        },
+        {
+            "id": "13",
+            "name": "Kathy Thomas",
+            "postCount": 6
+        },
+        {
+            "id": "6",
+            "name": "Diana White",
+            "postCount": 5
+        },
+        {
+            "id": "18",
+            "name": "Paul Walker",
+            "postCount": 5
+        }
+  ]
+  res.status(200).json(topUsers);
+})
 module.exports = { userRoute };
